@@ -56,7 +56,6 @@ class CustomViewHolder extends RecyclerView.ViewHolder{
     public CustomViewHolder(View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.poster);
-        card = itemView.findViewById(R.id.cardContainer);
 
     }
 }

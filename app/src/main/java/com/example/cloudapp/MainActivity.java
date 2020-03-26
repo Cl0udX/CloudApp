@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
                     int idx = parent.getChildPosition(view);
                     int perRow = layoutManager.getSpanCount();
 
-                    int adj = 50; // some adjustment
+                    int adj = 200; // some adjustment
 
-
-                    if(idx % 2 == perRow - 1){
+                    //idx % 2 == perRow - 1
+                    if(idx==1){
                         // on last column, adjust. Right magically adjusts bottom, so adjust it too...
                         top += adj;
+
                     }
 
                     outRect.set(left, top, right, bottom);
