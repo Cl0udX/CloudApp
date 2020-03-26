@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     int idx = parent.getChildPosition(view);
                     int perRow = layoutManager.getSpanCount();
 
-                    int adj = 200; // some adjustment
+                    int adj = 150; // some adjustment
 
                     //idx % 2 == perRow - 1
                     if(idx==1){
