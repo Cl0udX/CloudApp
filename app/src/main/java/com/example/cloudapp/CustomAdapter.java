@@ -1,18 +1,16 @@
 package com.example.cloudapp;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.ViewTarget;
-import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -35,12 +33,14 @@ class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
         return holder;
     }
 
+
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         Integer image=images.get(position);
 
+        Glide.with(context).load(image).centerCrop().into(holder.image);
 
-        View view = Glide.with(context).load(image).centerCrop().into(holder.image).getView();
+
 
         //Picasso.with(context).load(image).into(holder.image);
     }
@@ -52,9 +52,11 @@ class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
 }
 class CustomViewHolder extends RecyclerView.ViewHolder{
     ImageView image;
+    CardView card;
     public CustomViewHolder(View itemView) {
         super(itemView);
-
         image = itemView.findViewById(R.id.poster);
+        card = itemView.findViewById(R.id.cardContainer);
+
     }
 }
