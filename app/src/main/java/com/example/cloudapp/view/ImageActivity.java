@@ -94,7 +94,7 @@ public class ImageActivity extends AppCompatActivity {
                 conn.upload("images/"+imageName+"."+imageFormat, imageFile, new AsyncCallback<String>() {
                     @Override
                     public void callback(String data) {
-                        Thread.currentThread().sleep(500);
+                        Thread.currentThread().sleep(240000);
                         if(data.equals("200"))
 
                             conn.download("jsons/" + imageName + ".json", new AsyncCallback<File>() {
