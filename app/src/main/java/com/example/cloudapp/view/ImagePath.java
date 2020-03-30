@@ -1,15 +1,15 @@
-package com.example.cloudapp;
+package com.example.cloudapp.view;
 
-class imagePath {
+public class ImagePath {
     private  String path;
     private String data;
 
-    public imagePath(){
-        
+    public ImagePath(){
+
     }
 
 
-    public imagePath(String path) {
+    public ImagePath(String path) {
         this.path = path;
 
     }
@@ -21,6 +21,4 @@ class imagePath {
     public void setPath(String path) {
         this.path = path;
     }
-
-
 }

@@ -20,9 +20,9 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
     private Context context;
-    private List<imagePath> images;
+    private List<ImagePath> images;
 
-    public CustomAdapter( Context mainActivity, List<imagePath> photos) {
+    public CustomAdapter( Context mainActivity, List<ImagePath> photos) {
         context=mainActivity;
         images=photos;
     }
@@ -39,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        imagePath image=images.get(position);
+        ImagePath image=images.get(position);
         File d=new File(image.getPath());
         Uri dd=Uri.fromFile(d);
         Glide.with(context).load(dd).centerCrop().into(holder.image);
