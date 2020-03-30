@@ -1,4 +1,4 @@
-package com.example.cloudapp;
+package com.example.cloudapp.controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.cloudapp.R;
+import com.example.cloudapp.view.CustomAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                     int perRow = layoutManager.getSpanCount();
 
                     int adj = 50; // some adjustment
-
 
                     if(idx % 2 == perRow - 1){
                         // on last column, adjust. Right magically adjusts bottom, so adjust it too...

@@ -1,4 +1,4 @@
-package com.example.cloudapp;
+package com.example.cloudapp.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.example.cloudapp.R;
 
 
 import java.util.List;
 
-class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
+public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
     private Context context;
     private List<Integer> images;
 
