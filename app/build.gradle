@@ -46,8 +46,6 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
-    implementation 'com.amazonaws:aws-java-sdk-rekognition'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

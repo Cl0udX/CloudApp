@@ -101,7 +101,7 @@ public class AWSS3Connection {
 
     }
 
-    public File download(String name, AsyncCallback<File> callback){
+    public void download(String name, AsyncCallback<File> callback){
         TransferUtility transferUtility = new TransferUtility(s3, this.context);
 
         Log.i("INFO", "CREDENTIALS: " + credentialsProvider.getCredentials());

@@ -4,8 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import com.amazonaws.sdk.*;
-import com.amazonaws.services.rekognition.AmazonRekognition;
+import com.example.cloudapp.view.CustomAdapter;
 
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Integer> photos;
     private CustomAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.photos_viewer);
         recyclerView= findViewById(R.id.grid);
         photos=new ArrayList<>();
-        adapter=new CustomAdapter(this,photos);
         recyclerView.setAdapter(adapter);
         final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
