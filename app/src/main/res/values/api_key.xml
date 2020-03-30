@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="aws-key">KEY_HERE</string>
+    <string name="aws-key">KEY_HER</string>
     <string name="aws-secret">SECRET_HERE</string>
 
 </resources>
