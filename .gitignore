@@ -12,6 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+
 .idea/
-app/src/main/res/values/api_key.xml
+/app/src/main/res/values/api_key.xml
 
