@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import com.amazonaws.sdk.*;
+import com.amazonaws.services.rekognition.AmazonRekognition;
 
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         photos.add(R.drawable.e8);
         photos.add(R.drawable.e9);
         adapter.notifyDataSetChanged();
-
     }
 
 }
