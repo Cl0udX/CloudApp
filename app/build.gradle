@@ -35,10 +35,13 @@ android {
 
 
 dependencies {
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.2.+'
+    implementation "commons-logging:commons-logging-api:1.1"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
-    implementation 'com.amazonaws:aws-java-sdk-s3'
+    //implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
+    //implementation 'com.amazonaws:aws-java-sdk-s3'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

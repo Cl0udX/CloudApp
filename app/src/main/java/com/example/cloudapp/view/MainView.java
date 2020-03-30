@@ -26,6 +26,7 @@ public class MainView extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     public MainView() {
         // Required empty public constructor
     }
@@ -48,13 +49,19 @@ public class MainView extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
