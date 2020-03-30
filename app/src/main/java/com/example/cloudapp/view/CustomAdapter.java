@@ -1,7 +1,9 @@
 package com.example.cloudapp.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         ImagePath image=images.get(position);
+        holder.setPath(image);
         File d=new File(image.getPath());
         Uri dd=Uri.fromFile(d);
         Glide.with(context).load(dd).centerCrop().into(holder.image);
@@ -54,12 +57,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
         return images.size();
     }
 }
-class CustomViewHolder extends RecyclerView.ViewHolder{
+class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     ImageView image;
     CardView card;
+    ImagePath path;
     public CustomViewHolder(View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.poster);
-
+        itemView.setOnClickListener(this);
+    }
+    public void setPath(ImagePath path){
+        this.path=(path);
+    }
+    @Override
+    public void onClick(View v) {
+        Intent i=new Intent(v.getContext(),ImageActivity.class);
+        i.putExtra("path",path.getPath());
+        v.getContext().startActivity(i);
     }
 }
