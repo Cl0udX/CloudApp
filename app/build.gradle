@@ -39,7 +39,9 @@ android {
 
 
 dependencies {
-    implementation 'com.amazonaws:aws-android-sdk-s3:2.2.+'
+
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.30'
+
     implementation "commons-logging:commons-logging-api:1.1"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])

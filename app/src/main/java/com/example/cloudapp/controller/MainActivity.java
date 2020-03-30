@@ -10,12 +10,6 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferState;
-import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.example.cloudapp.EndlessRecyclerViewScrollListener;
 import com.example.cloudapp.R;
 import com.example.cloudapp.model.AWSS3Connection;
@@ -30,10 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSONS_CALLBACK = 1;
@@ -51,11 +41,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.photos_viewer);
 
         if (!(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_MEDIA_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        && ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
+        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{
                     Manifest.permission.ACCESS_MEDIA_LOCATION,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_NETWORK_STATE
 
             }, PERMISSONS_CALLBACK);
 
@@ -67,63 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void showPhotos() {
 
 
         recyclerView = findViewById(R.id.grid);
         complete = getPicturePaths();
 
-        //TEST TO AWS
-
-        try {
-            String key = getString(R.string.aws_key);
-            String secret = getString(R.string.aws_secret);
-            String endpoint = getString(R.string.endpoint);
-
-
-            AmazonS3Client s3 = AWSS3Connection.getAWSS3Connection(key, secret, endpoint).getClient();
-            TransferUtility transferUtility = new TransferUtility(s3, getApplicationContext());
-
-
-            Log.i("INFO", "showPhotos: Before");
-            final TransferObserver observer = transferUtility.upload(
-                    getString(R.string.bucket),
-                    "images/test.jpeg",
-                    new File(complete.get(0).getPath()),
-                    CannedAccessControlList.Private
-            );
-
-            Log.i("INFO", "showPhotos: After");
-
-            observer.setTransferListener(new TransferListener() {
-                @Override
-                public void onStateChanged(int id, TransferState state) {
-                    if (state.equals(TransferState.COMPLETED)) {
-                        Log.i("INFO", "onStateChanged: COMPLETE");
-                    } else if (state.equals(TransferState.FAILED)) {
-                        Log.i("INFO", "onStateChanged: FAILED");
-                    } else {
-                        Log.i("INFO", "onStateChanged: state: " + state);
-                    }
-                }
-
-                @Override
-                public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
-                    Log.i("INFO", "onProgressChanged: id-" + id + " bytes-" + bytesCurrent + " bytesTotal: " + bytesTotal);
-                }
-
-                @Override
-                public void onError(int id, Exception ex) {
-                    Log.i("ERROR", "onError: " + ex.getMessage());
-                }
-            });
-
-        } catch (Exception e) {
-            Log.e("ERROR", "showPhotos: " + e.getMessage());
-        }
-
-        //END TEST
 
         folds = new ArrayList<>();
         for (int i = 0; i <= 20 && i < complete.size(); i++) {
