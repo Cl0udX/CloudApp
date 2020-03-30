@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.cloudapp.R;
+import com.example.cloudapp.model.ImagePath;
 
 
 import java.io.File;

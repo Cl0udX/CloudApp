@@ -12,7 +12,7 @@ import android.view.View;
 import com.example.cloudapp.EndlessRecyclerViewScrollListener;
 import com.example.cloudapp.R;
 import com.example.cloudapp.view.CustomAdapter;
-import com.example.cloudapp.view.ImagePath;
+import com.example.cloudapp.model.ImagePath;
 
 import java.util.ArrayList;
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         folds.clear();
         int pa = page;
         int i = (pa * 20);
-        for (; i < complete.size(); i++) {
+        for (; i<i+20 && i < complete.size(); i++) {
             folds.add(complete.get(i));
         }
         adapter.notifyDataSetChanged();

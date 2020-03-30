@@ -1,4 +1,4 @@
-package com.example.cloudapp.view;
+package com.example.cloudapp.model;
 
 public class ImagePath {
     private  String path;
