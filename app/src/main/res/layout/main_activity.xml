@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragmentContainer"
-        android:name="com.example.cloudapp.MainView"
+        android:name="com.example.cloudapp.view.MainView"
         tools:layout="@layout/fragment_main_view"></fragment>
 
     <RelativeLayout
