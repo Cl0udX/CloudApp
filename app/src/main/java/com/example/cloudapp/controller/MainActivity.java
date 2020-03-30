@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int adj = 150; // some adjustment
 
-                if (idx % 2 == perRow - 1) {
+                if (idx == 1) {
                     // on last column, adjust. Right magically adjusts bottom, so adjust it too...
                     top += adj;
                 }
