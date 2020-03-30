@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadNextData(int page) {
         folds.clear();
         int pa = page;
-        int i = (pa * 20);
+        int i = ( (pa-1) * 20);
         for (; i<i+20 && i < complete.size(); i++) {
             folds.add(complete.get(i));
         }
