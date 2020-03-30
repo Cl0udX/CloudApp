@@ -22,6 +22,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSONS_CALLBACK = 1;
     private ArrayList<ImagePath> folds;
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         showPhotos();
 
     }
+
 
 
     private void showPhotos() {

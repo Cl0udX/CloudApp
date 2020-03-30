@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.cloudapp.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.Serializable;
 
@@ -66,6 +69,15 @@ public class ImageActivity extends AppCompatActivity {
         emotion7=findViewById(R.id.emotion7);
         emotion7v=findViewById(R.id.emotion7v);
         Serializable out=getIntent().getExtras().getSerializable("path");
+        Serializable json=getIntent().getExtras().getSerializable("json");
+        if(json!=null){
+            try {
+                JSONObject object= new JSONObject(json.toString());
+                readJason(object);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         if(out!=null){
             File d=new File((String)out);
             Uri dd=Uri.fromFile(d);
@@ -78,5 +90,65 @@ public class ImageActivity extends AppCompatActivity {
                 }
         );
 
+    }
+    public void readJason(JSONObject object) throws Exception {
+        JSONObject faceDetail=object.getJSONArray("FaceDetails").getJSONObject(0);
+        //----------------------------*************************-----------------------------
+        JSONObject ageRange=faceDetail.getJSONObject("AgeRange");
+        int low=ageRange.getInt("Low");
+        int high=ageRange.getInt("High");
+        rageAge.setText("[ "+low+" : "+high+" ]");
+        //----------------------------*************************-----------------------------
+        JSONObject smile=faceDetail.getJSONObject("Smile");
+        Boolean smileV=smile.getBoolean("Value");
+        double smileC=smile.getDouble("Confidence");
+        this.smile.setText(smileV+" con una precicion del: "+Math.ceil(smileC)+"%");
+        //----------------------------*************************-----------------------------
+        JSONObject gender=faceDetail.getJSONObject("Gender");
+        String genderV=gender.getString("Value");
+        double genferC=gender.getDouble("Confidence");
+        this.gender.setText(genderV+" con una precicion del: "+Math.ceil(genferC)+"%");
+        //----------------------------*************************-----------------------------
+        JSONArray emotions=faceDetail.getJSONArray("Emotions");
+        JSONObject emotion0=emotions.getJSONObject(0);
+        JSONObject emotion1=emotions.getJSONObject(1);
+        JSONObject emotion2=emotions.getJSONObject(2);
+        JSONObject emotion3=emotions.getJSONObject(3);
+        JSONObject emotion4=emotions.getJSONObject(4);
+        JSONObject emotion5=emotions.getJSONObject(5);
+        JSONObject emotion6=emotions.getJSONObject(6);
+        JSONObject emotion7=emotions.getJSONObject(7);
+        String emotion0t=emotion0.getString("Type");
+        Double emotion0v=emotion0.getDouble("Confidence");
+        String emotion1t=emotion1.getString("Type");
+        Double emotion1v=emotion1.getDouble("Confidence");
+        String emotion2t=emotion2.getString("Type");
+        Double emotion2v=emotion2.getDouble("Confidence");
+        String emotion3t=emotion3.getString("Type");
+        Double emotion3v=emotion3.getDouble("Confidence");
+        String emotion4t=emotion4.getString("Type");
+        Double emotion4v=emotion4.getDouble("Confidence");
+        String emotion5t=emotion5.getString("Type");
+        Double emotion5v=emotion5.getDouble("Confidence");
+        String emotion6t=emotion6.getString("Type");
+        Double emotion6v=emotion6.getDouble("Confidence");
+        String emotion7t=emotion7.getString("Type");
+        Double emotion7v=emotion7.getDouble("Confidence");
+        this.emotion0.setText(emotion0t);
+        this.emotion0v.setText(Math.ceil(emotion0v)+"%");
+        this.emotion1.setText(emotion1t);
+        this.emotion1v.setText(Math.ceil(emotion1v)+"%");
+        this.emotion2.setText(emotion2t);
+        this.emotion2v.setText(Math.ceil(emotion2v)+"%");
+        this.emotion3.setText(emotion3t);
+        this.emotion3v.setText(Math.ceil(emotion3v)+"%");
+        this.emotion4.setText(emotion4t);
+        this.emotion4v.setText(Math.ceil(emotion4v)+"%");
+        this.emotion5.setText(emotion5t);
+        this.emotion5v.setText(Math.ceil(emotion5v)+"%");
+        this.emotion6.setText(emotion6t);
+        this.emotion6v.setText(Math.ceil(emotion6v)+"%");
+        this.emotion7.setText(emotion7t);
+        this.emotion7v.setText(Math.ceil(emotion7v)+"%");
     }
 }
