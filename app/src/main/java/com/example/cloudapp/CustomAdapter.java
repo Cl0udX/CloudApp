@@ -1,6 +1,7 @@
 package com.example.cloudapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 
+import java.io.File;
 import java.util.List;
 
 class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
     private Context context;
-    private List<Integer> images;
+    private List<imagePath> images;
 
-    public CustomAdapter( Context mainActivity, List<Integer> photos) {
+    public CustomAdapter( Context mainActivity, List<imagePath> photos) {
         context=mainActivity;
         images=photos;
     }
@@ -36,10 +38,10 @@ class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>{
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        Integer image=images.get(position);
-
-        Glide.with(context).load(image).centerCrop().into(holder.image);
-
+        imagePath image=images.get(position);
+        File d=new File(image.getPath());
+        Uri dd=Uri.fromFile(d);
+        Glide.with(context).load(dd).centerCrop().into(holder.image);
 
 
         //Picasso.with(context).load(image).into(holder.image);
