@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/backImage"
         android:layout_width="24dp"
         android:layout_height="28dp"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/backImage"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:textAlignment="textEnd"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/backImage"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
